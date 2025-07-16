@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Đơn Giản</title>
+</head>
+<body>
+  <h2>Đăng ký thông tin</h2>
+  <form>
+    <label for="name">Họ tên:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="gender">Giới tính:</label><br>
+    <input type="radio" id="male" name="gender" value="Nam">
+    <label for="male">Nam</label>
+    <input type="radio" id="female" name="gender" value="Nữ">
+    <label for="female">Nữ</label><br><br>
+
+    <button type="submit">Gửi</button>
+  </form>
+
+  <h2>Danh sách sinh viên</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <caption><strong>Bảng dữ liệu sinh viên</strong></caption>
+  <thead>
+    <tr>
+      <th>STT</th>
+      <th>Mã SV</th>
+      <th>Họ tên</th>
+      <th>Email</th>
+      <th>Giới tính</th>
+      <th>Ngày sinh</th>
+      <th>Hành động</th> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>SV001</td>
+      <td>Nguyễn Văn A</td>
+      <td>vana@gmail.com</td>
+      <td>Nam</td>
+      <td>2002-01-15</td>
+      <td>
+        <a href="#">Sửa</a> |
+        <a href="#">Xoá</a>
+      </td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>SV002</td>
+      <td>Trần Thị B</td>
+      <td>thib@gmail.com</td>
+      <td>Nữ</td>
+      <td>2003-05-20</td>
+      <td>
+        <a href="#">Sửa</a> |
+        <a href="#">Xoá</a>
+      </td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>SV003</td>
+      <td>Lê Văn C</td>
+      <td>vanc@gmail.com</td>
+      <td>Nam</td>
+      <td>2001-11-30</td>
+      <td>
+        <a href="#">Sửa</a> |
+        <a href="#">Xoá</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
