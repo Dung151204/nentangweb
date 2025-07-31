@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý Nhân viên</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="employees.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom px-4">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="#">TLU</a>
+    <span class="ms-2 text-muted">Home</span>
+    <span class="mx-1 text-muted">/</span>
+    <span class="text-muted">Employees</span>
+    <form class="d-flex ms-auto">
+      <input class="form-control me-2" type="search" placeholder="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<div class="header-bar d-flex justify-content-between align-items-center">
+  <h5 class="mb-0 fw-bold">Manage <span class="fw-normal">Employees</span></h5>
+  <div>
+    <button class="btn btn-delete me-2"><i class="fas fa-trash"></i> Delete</button>
+    <button class="btn btn-add" data-bs-toggle="modal" data-bs-target="#addModal">
+      <i class="fas fa-plus-circle"></i> Add New Employee
+    </button>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle">
+      <thead class="table-light">
+        <tr>
+          <th><input type="checkbox" /></th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>Thomas Hardy</td>
+          <td>thomashardy@mail.com</td>
+          <td>89 Chiaroscuro Rd, Portland, USA</td>
+          <td>(171) 555-2222</td>
+          <td>
+            <button class="btn btn-sm btn-edit me-1"><i class="fas fa-pen"></i></button>
+            <button class="btn btn-sm btn-remove"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>Dominique Perrier</td>
+          <td>dominiqueperrier@mail.com</td>
+          <td>Obere Str. 57, Berlin, Germany</td>
+          <td>(313) 555-5735</td>
+          <td>
+            <button class="btn btn-sm btn-edit me-1"><i class="fas fa-pen"></i></button>
+            <button class="btn btn-sm btn-remove"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mt-3">
+    <span>Showing 5 out of 25 entries</span>
+    <nav>
+      <ul class="pagination pagination-sm mb-0">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item active"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <h5 class="modal-title" id="addModalLabel">Add Employee</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <textarea class="form-control" id="address" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="tel" class="form-control" id="phone" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-success">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="data.js"></script>
+<script src="employeesscript.js"></script>
+</body>
+</html>

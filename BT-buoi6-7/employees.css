@@ -1,0 +1,31 @@
+.header-bar {
+  background-color: #566787 !important;
+  color: white !important;
+  padding: 12px 24px;
+}
+
+.btn-delete {
+  background-color: #e74c3c !important;
+  color: white !important;
+}
+
+.btn-add {
+  background-color: #2ecc71 !important;
+  color: white !important;
+}
+
+.btn-edit {
+  background-color: #ffc107 !important;
+  color: white !important;
+}
+
+.btn-remove {
+  background-color: #e74c3c !important;
+  color: white !important;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+  color: white !important;
+}
