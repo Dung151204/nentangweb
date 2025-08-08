@@ -1,10 +1,21 @@
 import React from "react";
 
 function StudentTable({ students, onEdit, onDelete }) {
+  const handleDelete = (index) => {
+    const confirmDelete = window.confirm(
+      "Bạn có chắc chắn muốn xoá sinh viên này không?"
+    );
+    if (confirmDelete) {
+      onDelete(index);
+    }
+  };
+
   return (
     <div className="flex-fill table-responsive" style={{ minWidth: "400px" }}>
       <table className="table table-bordered table-hover">
-        <caption><strong>Danh sách sinh viên</strong></caption>
+        <caption>
+          <strong>Danh sách sinh viên</strong>
+        </caption>
         <thead>
           <tr>
             <th>STT</th>
@@ -24,8 +35,18 @@ function StudentTable({ students, onEdit, onDelete }) {
               <td>{sv.gender}</td>
               <td>{sv.dob}</td>
               <td>
-                <button className="btn btn-sm btn-warning me-1" onClick={() => onEdit(index)}>Sửa</button>
-                <button className="btn btn-sm btn-danger" onClick={() => onDelete(index)}>Xoá</button>
+                <button
+                  className="btn btn-sm btn-warning me-1"
+                  onClick={() => onEdit(index)}
+                >
+                  Sửa
+                </button>
+                <button
+                  className="btn btn-sm btn-danger"
+                  onClick={() => handleDelete(index)}
+                >
+                  Xoá
+                </button>
               </td>
             </tr>
           ))}

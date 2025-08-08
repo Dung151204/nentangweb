@@ -8,13 +8,26 @@ function App() {
   const [students, setStudents] = useState([]);
   const [editingIndex, setEditingIndex] = useState(-1);
 
+  // Dữ liệu mẫu ban đầu
+  const defaultStudents = [
+    { name: "Nguyễn Văn A", email: "vana@example.com", gender: "Nam", dob: "2001-01-15" },
+    { name: "Trần Thị B", email: "thib@example.com", gender: "Nữ", dob: "2002-02-20" },
+    { name: "Lê Văn C", email: "vanc@example.com", gender: "Nam", dob: "2000-03-10" },
+    { name: "Phạm Thị D", email: "thid@example.com", gender: "Nữ", dob: "2001-04-25" },
+    { name: "Hoàng Văn E", email: "vane@example.com", gender: "Nam", dob: "1999-05-30" },
+  ];
+
+  // Lấy dữ liệu từ localStorage hoặc gán dữ liệu mẫu
   useEffect(() => {
     const saved = localStorage.getItem("students");
     if (saved) {
       setStudents(JSON.parse(saved));
+    } else {
+      setStudents(defaultStudents); // nếu chưa có dữ liệu → dùng dữ liệu mẫu
     }
   }, []);
 
+  // Lưu dữ liệu vào localStorage mỗi khi thay đổi
   useEffect(() => {
     localStorage.setItem("students", JSON.stringify(students));
   }, [students]);
