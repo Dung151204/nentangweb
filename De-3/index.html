@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý Nhân viên</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+  <!-- jQuery & jQuery Validate -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+</head>
+
+<body>
+  <div class="wrapper d-flex flex-column min-vh-100">
+    <!-- NAV -->
+    <nav class="navbar navbar-dark bg-dark px-4">
+      <span class="navbar-brand fw-bold">Trường Đại học Thủy Lợi</span>
+      <div class="d-flex ms-auto align-items-center">
+        <a class="nav-link text-white me-3" href="#">Trang chủ</a>
+        <a class="nav-link text-white me-3" href="#">Quản lý cửa hàng</a>
+        <form class="d-flex ms-auto w-auto">
+          <input class="form-control form-control-sm me-2" type="search" placeholder="Nhập nội dung tìm kiếm">
+          <button class="btn btn-success px-3 py-1" type="submit" style="white-space: nowrap; min-width: 100px;">TÌM KIẾM</button>
+        </form>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <div class="container mt-3 mb-4">
+      <div class="d-flex justify-content-between mb-2">
+        <div>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+            <i class="fas fa-plus-circle"></i> THÊM MỚI
+          </button>
+          <button class="btn btn-light border">
+            <i class="fas fa-file-export"></i> XUẤT RA FILE
+          </button>
+        </div>
+        <div class="input-group w-50">
+          <span class="input-group-text"><i class="fas fa-arrow-right"></i></span>
+          <input type="text" class="form-control" placeholder="Tìm kiếm theo Tên">
+        </div>
+        <select class="form-select w-auto">
+          <option selected>20</option>
+        </select>
+      </div>
+
+      <table class="table table-bordered text-center align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>
+              <button class="btn btn-outline-dark btn-sm rounded-1 px-2 py-1 me-3">
+                <i class="bi bi-caret-down-fill"></i>
+              </button>
+            </th>
+            <th>Hành động</th>
+            <th>STT</th>
+            <th>Tên</th>
+            <th>Họ đệm</th>
+            <th>Địa chỉ</th>
+            <th>Hoạt động</th>
+          </tr>
+        </thead>
+        <tbody id="data-body">
+          <!-- Dữ liệu sẽ được thêm bằng JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-primary text-white text-start py-3 ps-3 mt-auto">
+      <strong>TRƯỜNG ĐẠI HỌC THỦY LỢI</strong><br />
+      Địa chỉ: 175 Tây Sơn, Đống Đa, Hà Nội<br />
+      Điện thoại: (024) 38522201 - Fax: (024) 35633351<br />
+      Email: phongctct@tlu.edu.vn
+    </footer>
+  </div>
+
+  <!-- MODAL Thêm Nhân viên -->
+  <div class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" id="formAdd">
+        <div class="modal-header">
+          <h5 class="modal-title">Thêm Nhân viên</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-2">
+            <label for="ten">Tên</label>
+            <input type="text" id="ten" name="ten" class="form-control">
+            <div id="err-ten" class="form-text text-danger"></div>
+          </div>
+          <div class="mb-2">
+            <label for="hodem">Họ đệm</label>
+            <input type="text" id="hodem" name="hodem" class="form-control">
+            <div id="err-hodem" class="form-text text-danger"></div>
+          </div>
+          <div class="mb-2">
+            <label for="diachi">Địa chỉ</label>
+            <input type="text" id="diachi" name="diachi" class="form-control">
+            <div id="err-diachi" class="form-text text-danger"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+          <button type="submit" class="btn btn-success">Thêm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- VALIDATION SCRIPT -->
+  <script>
+    $().ready(function () {
+      $("#formAdd").validate({
+        rules: {
+          ten: {
+            required: true,
+            maxlength: 15
+          },
+          hodem: {
+            required: true,
+            maxlength: 20
+          },
+          diachi: {
+            required: true,
+            maxlength: 50
+          }
+        },
+        messages: {
+          ten: {
+            required: "Vui lòng nhập Tên",
+            maxlength: "Tên không được vượt quá 15 ký tự"
+          },
+          hodem: {
+            required: "Vui lòng nhập Họ đệm",
+            maxlength: "Họ đệm không được vượt quá 20 ký tự"
+          },
+          diachi: {
+            required: "Vui lòng nhập Địa chỉ",
+            maxlength: "Địa chỉ không được vượt quá 50 ký tự"
+          }
+        },
+        errorPlacement: function (error, element) {
+          const id = element.attr("id");
+          $(`#err-${id}`).html(error);
+        },
+        success: function (label, element) {
+          const id = $(element).attr("id");
+          $(`#err-${id}`).html(""); // Xóa thông báo lỗi khi hợp lệ
+        }
+      });
+    });
+  </script>
+
+  <!-- DATA & SCRIPT -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

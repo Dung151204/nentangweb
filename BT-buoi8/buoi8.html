@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý Giao dịch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap & FontAwesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- CSS tùy chỉnh -->
+  <link rel="stylesheet" href="buoi8.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark bg-dark px-4">
+    <span class="navbar-brand fw-bold">Trường Đại học Thủy Lợi</span>
+    <form class="d-flex ms-auto">
+      <input class="form-control me-2" type="search" placeholder="Nhập nội dung tìm kiếm">
+      <button class="btn btn-success" type="submit">TÌM KIẾM</button>
+    </form>
+  </nav>
+
+  <!-- Header -->
+  <div class="header-bar d-flex justify-content-between align-items-center mt-3 mx-4">
+    <div>
+      <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#addModal">
+        <i class="fas fa-plus-circle"></i> THÊM
+      </button>
+      <button class="btn btn-light border"><i class="fas fa-file-export"></i> XUẤT RA FILE</button>
+    </div>
+    <div class="input-group w-25">
+      <input type="text" class="form-control" placeholder="Tìm kiếm giao dịch">
+      <button class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+    </div>
+    <select class="form-select w-auto">
+      <option selected>5</option>
+      <option>10</option>
+      <option>20</option>
+    </select>
+  </div>
+
+  <!-- Table -->
+  <div class="container mt-3">
+    <div class="table-responsive">
+      <table class="table table-bordered text-center align-middle">
+  <thead class="table-dark">
+    <tr>
+      <th style="width: 40px;">x</th>
+      <th>Hành động</th>
+      <th>
+        ID
+        <i class="fas fa-caret-up text-white ms-1"></i>
+        <i class="fas fa-caret-down text-white"></i>
+      </th>
+      <th>
+        Khách hàng
+        <i class="fas fa-caret-up text-white ms-1"></i>
+        <i class="fas fa-caret-down text-white"></i>
+      </th>
+      <th>
+        Nhân viên
+        <i class="fas fa-caret-up text-white ms-1"></i>
+        <i class="fas fa-caret-down text-white"></i>
+      </th>
+      <th>
+        Số tiền
+        <i class="fas fa-caret-up text-white ms-1"></i>
+        <i class="fas fa-caret-down text-white"></i>
+      </th>
+      <th>
+        Ngày mua
+        <i class="fas fa-caret-up text-white ms-1"></i>
+        <i class="fas fa-caret-down text-white"></i>
+      </th>
+    </tr>
+  </thead>
+  <tbody id="data-body"></tbody>
+</table>
+
+    </div>
+
+    <!-- Delete button -->
+    <button class="btn btn-danger mt-2"><i class="fas fa-trash"></i> DELETE SELECTED RECORDS</button>
+
+    <!-- Pagination -->
+    <nav class="mt-3">
+      <ul class="pagination pagination-sm">
+        <li class="page-item"><a class="page-link" href="#">Trang</a></li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <li class="page-item"><a class="page-link" href="#">6</a></li>
+        
+        <a class="page-link" href="#">&raquo;</a>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white text-center py-3 mt-5">
+    <strong>TRƯỜNG ĐẠI HỌC THỦY LỢI</strong><br>
+    Địa chỉ: 175 Tây Sơn, Đống Đa, Hà Nội<br>
+    Điện thoại: (024) 38522201 - Fax: (024) 35633351<br>
+    Email: phongctct@tlu.edu.vn
+  </footer>
+
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <form class="modal-content" id="formAdd">
+      <div class="modal-header">
+        <h5 class="modal-title">Thêm giao dịch</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-2">
+          <label>Khách hàng</label>
+          <input type="text" id="customer" class="form-control" required>
+          <div id="error-customer" class="form-text text-danger"></div>
+        </div>
+        <div class="mb-2">
+          <label>Nhân viên</label>
+          <input type="text" id="staff" class="form-control" required>
+          <div id="error-staff" class="form-text text-danger"></div>
+        </div>
+        <div class="mb-2">
+          <label>Số tiền</label>
+          <input type="number" id="amount" class="form-control" required>
+          <div id="error-amount" class="form-text text-danger"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <button type="submit" class="btn btn-success">Thêm</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+  <!-- Script -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
